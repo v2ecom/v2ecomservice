@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, ArrowRight, Zap } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
+import v2Logo from '../../assets/v2logo.png';
 
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Blog', href: '/blog' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -45,12 +47,10 @@ export default function Navbar() {
               className="flex items-center gap-2.5 group"
               whileHover={{ scale: 1.02 }}
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-glow group-hover:shadow-glow-cyan transition-shadow duration-300">
-                <Zap size={18} className="text-white" fill="white" />
-              </div>
+              <img src={v2Logo} alt="V2 Ecom Logo" className="h-10 w-auto" />
               <div className="flex flex-col leading-none">
-                <span className="font-bold text-dark text-base font-poppins tracking-tight">V2 Ecom</span>
-                <span className="text-[10px] font-medium text-slate-400 tracking-widest uppercase">Services</span>
+                <span className="font-bold text-primary text-base font-poppins tracking-tight">V2 Ecom</span>
+                <span className="text-[10px] font-medium text-muted tracking-widest uppercase">Services</span>
               </div>
             </MotionLink>
 
@@ -62,10 +62,10 @@ export default function Navbar() {
                   <MotionLink
                     key={link.label}
                     to={link.href}
-                    className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
+                    className={`relative px-4 py-2 text-[17px] font-jakarta font-semibold rounded-lg transition-colors duration-200 ${
                       isActive
                         ? 'text-primary'
-                        : 'text-slate-600 hover:text-dark hover:bg-slate-50'
+                        : 'text-muted hover:text-primary hover:bg-background'
                     }`}
                     whileHover={{ scale: 1.02 }}
                   >
@@ -82,16 +82,20 @@ export default function Navbar() {
             </nav>
 
             {/* CTA */}
-            <div className="hidden lg:flex items-center gap-3">
-              <MotionLink
-                to="/contact"
+            <div className="hidden lg:flex items-center gap-3 relative group">
+              <motion.button
+                onClick={() => window.dispatchEvent(new CustomEvent('openAuditPopup'))}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-primary to-secondary shadow-glow hover:shadow-glow-cyan transition-all duration-200"
+                className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-[17px] font-jakarta font-semibold text-dark bg-accent hover:bg-accent/90 shadow-sm transition-all duration-200"
               >
-                Book Consultation
-                <ArrowRight size={14} />
-              </MotionLink>
+                {/* Vibration pulse effect */}
+                <span className="absolute inset-0 rounded-xl bg-accent opacity-60 animate-ping" style={{ animationDuration: '2s' }}></span>
+                <span className="relative z-10 flex items-center gap-2">
+                  Book Consultation
+                  <ArrowRight size={14} />
+                </span>
+              </motion.button>
             </div>
 
             {/* Mobile menu button */}
@@ -122,7 +126,7 @@ export default function Navbar() {
               initial={{ opacity: 0, x: -10 }}
               animate={mobileOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
               transition={{ delay: i * 0.05 }}
-              className={`px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+              className={`px-4 py-3 text-[17px] font-jakarta font-semibold rounded-lg transition-colors ${
                 location.pathname === link.href ? 'text-primary bg-primary/5' : 'text-slate-700 hover:text-primary hover:bg-primary/5'
               }`}
             >
@@ -130,13 +134,18 @@ export default function Navbar() {
             </MotionLink>
           ))}
           <div className="mt-2 pt-2 border-t border-slate-100">
-            <Link
-              to="/contact"
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-primary to-secondary"
+            <button
+              onClick={() => {
+                setMobileOpen(false);
+                window.dispatchEvent(new CustomEvent('openAuditPopup'));
+              }}
+              className="relative flex items-center justify-center gap-2 w-full py-3 rounded-xl text-[17px] font-jakarta font-semibold text-dark bg-accent hover:bg-accent/90 overflow-hidden"
             >
-              Book Consultation <ArrowRight size={14} />
-            </Link>
+              <span className="absolute inset-0 bg-accent opacity-60 animate-ping" style={{ animationDuration: '2s' }}></span>
+              <span className="relative z-10 flex items-center gap-2">
+                Book Consultation <ArrowRight size={14} />
+              </span>
+            </button>
           </div>
         </div>
       </motion.div>

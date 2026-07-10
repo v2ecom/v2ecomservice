@@ -9,7 +9,7 @@ export function SectionHeader({ tag, title, highlight, description, center = tru
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase bg-primary/10 text-primary border border-primary/20 mb-4"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase bg-background text-primary border border-border mb-4"
         >
           {tag}
         </motion.div>
@@ -19,11 +19,11 @@ export function SectionHeader({ tag, title, highlight, description, center = tru
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-3xl lg:text-4xl xl:text-5xl font-bold text-dark font-poppins mb-4"
+        className="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary font-poppins mb-4"
       >
         {title}{' '}
         {highlight && (
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+          <span className="text-accent">
             {highlight}
           </span>
         )}
@@ -34,7 +34,7 @@ export function SectionHeader({ tag, title, highlight, description, center = tru
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className={`text-slate-500 text-lg leading-relaxed ${center ? 'max-w-2xl mx-auto' : 'max-w-xl'}`}
+          className={`text-muted text-lg leading-relaxed ${center ? 'max-w-2xl mx-auto' : 'max-w-xl'}`}
         >
           {description}
         </motion.p>

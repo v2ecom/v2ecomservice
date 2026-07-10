@@ -5,11 +5,11 @@ export function Button({ children, variant = 'primary', size = 'md', icon, class
   const base = 'inline-flex items-center gap-2 font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-2';
   
   const variants = {
-    primary: 'bg-gradient-to-r from-primary to-secondary text-white shadow-glow hover:shadow-glow-cyan hover:scale-[1.02] focus:ring-primary/50',
-    secondary: 'bg-white border border-slate-200 text-dark shadow-sm hover:border-primary/40 hover:shadow-card hover:scale-[1.02] focus:ring-primary/20',
-    outline: 'border-2 border-primary/30 text-primary hover:bg-primary/5 hover:border-primary focus:ring-primary/20',
-    ghost: 'text-dark hover:bg-slate-100 focus:ring-slate-200',
-    dark: 'bg-dark text-white hover:bg-dark-800 focus:ring-dark/30',
+    primary: 'bg-accent text-dark shadow-sm hover:bg-accent/90 focus:ring-accent/50',
+    secondary: 'bg-surface border border-border text-primary shadow-sm hover:border-primary/40 focus:ring-primary/20',
+    outline: 'border border-border bg-transparent text-primary hover:bg-background hover:border-primary focus:ring-primary/20',
+    ghost: 'text-text hover:bg-background focus:ring-border',
+    dark: 'bg-primary text-surface hover:bg-primary/90 focus:ring-primary/30',
     whatsapp: 'bg-[#25D366] text-white hover:bg-[#20BD5C] hover:scale-[1.02] focus:ring-[#25D366]/40',
   };
 

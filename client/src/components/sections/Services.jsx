@@ -1,59 +1,70 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
-  UserPlus, Store, BookOpen, Package, Truck, ShieldCheck,
-  ArrowRight, ChevronRight
+  UserPlus, BookOpen, TrendingUp,
+  Target, FileBarChart, ArrowRight, ChevronRight
 } from 'lucide-react';
 import { SectionHeader } from '../ui/SectionHeader';
+import amazonLogo from '../../assets/amazonlogo.png';
+import flipkartLogo from '../../assets/flipkartlogo.png';
+import meeshoLogo from '../../assets/meeshologo.png';
 
 const services = [
   {
-    icon: UserPlus,
-    title: 'Seller Registration & Setup',
-    description: 'End-to-end seller account creation on Amazon, Flipkart, and Meesho — including GST registration, company formation, and all compliance requirements.',
-    color: 'from-blue-500 to-cyan-500',
-    bg: 'bg-blue-50',
-    iconColor: 'text-blue-600',
+    logo: amazonLogo,
+    logoAlt: 'Amazon',
+    title: 'Amazon Account Management',
+    description: 'Complete account management, listing optimization, inventory monitoring, promotions, and business growth strategies.',
+    bg: 'bg-[#FFF8F0]',
   },
   {
-    icon: Store,
-    title: 'Marketplace Management',
-    description: 'Complete day-to-day management of your seller accounts, performance metrics, policy compliance, and account health monitoring across all platforms.',
-    color: 'from-violet-500 to-purple-600',
-    bg: 'bg-violet-50',
-    iconColor: 'text-violet-600',
+    logo: flipkartLogo,
+    logoAlt: 'Flipkart',
+    title: 'Flipkart Account Management',
+    description: 'End-to-end seller account management to improve product visibility and increase sales.',
+    bg: 'bg-[#F0F5FF]',
+  },
+  {
+    logo: meeshoLogo,
+    logoAlt: 'Meesho',
+    title: 'Meesho Management',
+    description: 'Marketplace setup, catalog management, pricing optimization, and sales growth support.',
+    bg: 'bg-[#FFF0F4]',
   },
   {
     icon: BookOpen,
-    title: 'Catalog Management',
-    description: 'Professional product listing, optimized titles, SEO-rich descriptions, A+ content, keyword research, and high-conversion catalog structures.',
-    color: 'from-cyan-500 to-teal-500',
-    bg: 'bg-cyan-50',
-    iconColor: 'text-cyan-600',
+    title: 'Product Listing Optimization',
+    description: 'SEO-friendly titles, bullet points, descriptions, keyword research, and highconverting product pages.',
+    bg: 'bg-emerald-50',
+    iconColor: 'text-emerald-600',
   },
   {
-    icon: Package,
-    title: 'Product Sourcing & Warehousing',
-    description: 'Strategic product sourcing, supplier negotiations, quality checks, and fulfillment-ready warehousing to ensure seamless order execution.',
-    color: 'from-orange-500 to-amber-500',
+    icon: TrendingUp,
+    title: 'Amazon PPC Management',
+    description: 'Campaign setup, keyword optimization, bid management, performance monitoring, and ROI-focused advertising.',
     bg: 'bg-orange-50',
     iconColor: 'text-orange-600',
   },
   {
-    icon: Truck,
-    title: 'Order & Return Management',
-    description: 'Streamlined order processing, real-time tracking, efficient return handling, and dispute resolution to maintain your seller performance metrics.',
-    color: 'from-green-500 to-emerald-500',
-    bg: 'bg-green-50',
-    iconColor: 'text-green-600',
+    icon: Target,
+    title: 'Sales Growth Strategy',
+    description: 'Competitor analysis, pricing strategy, promotional planning, and business performance optimization.',
+    bg: 'bg-indigo-50',
+    iconColor: 'text-indigo-600',
   },
   {
-    icon: ShieldCheck,
-    title: 'Fraud Protection & Reporting',
-    description: 'Advanced fraud detection, counterfeit claim management, monthly business intelligence reports, and marketplace growth strategy consulting.',
-    color: 'from-rose-500 to-pink-600',
-    bg: 'bg-rose-50',
-    iconColor: 'text-rose-600',
+    icon: UserPlus,
+    title: 'Marketplace Onboarding',
+    description: 'Quick and hassle-free onboarding on multiple marketplaces with complete documentation support.',
+    bg: 'bg-teal-50',
+    iconColor: 'text-teal-600',
+  },
+  {
+    icon: FileBarChart,
+    title: 'Business Reporting',
+    description: 'Weekly and monthly reports covering sales, advertising, inventory, and actionable recommendations.',
+    bg: 'bg-purple-50',
+    iconColor: 'text-purple-600',
   },
 ];
 
@@ -69,17 +80,17 @@ const cardVariants = {
 
 export default function Services() {
   return (
-    <section id="services" className="section-padding bg-surface relative overflow-hidden">
+    <section id="services" className="section-padding bg-background relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-mesh pointer-events-none" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-border" />
 
       <div className="container-base relative z-10">
         <SectionHeader
-          tag="What We Do"
+          tag="Our Services"
           title="Everything You Need to"
           highlight="Streamline Operations"
-          description="We are your dedicated marketplace management team. From day one to ongoing operations, we handle the complexities of selling online."
+          description=""
         />
 
         <motion.div
@@ -87,7 +98,7 @@ export default function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {services.map((service) => {
             const Icon = service.icon;
@@ -96,32 +107,31 @@ export default function Services() {
                 key={service.title}
                 variants={cardVariants}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="group relative bg-white rounded-2xl p-6 border border-slate-100 shadow-card hover:shadow-card-hover transition-all duration-300 cursor-default overflow-hidden"
+                className="group relative bg-surface rounded-2xl p-6 border border-border shadow-sm hover:shadow-card hover:border-primary/30 transition-all duration-300 cursor-default overflow-hidden"
               >
-                {/* Gradient border on hover */}
-                <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${service.color} p-[1.5px]`}>
-                  <div className="absolute inset-[1.5px] bg-white rounded-2xl" />
-                </div>
-
                 <div className="relative z-10">
-                  {/* Icon */}
-                  <div className={`w-12 h-12 rounded-xl ${service.bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon size={22} className={service.iconColor} />
+                  {/* Icon or Logo */}
+                  <div className={`w-12 h-12 rounded-xl ${service.bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 overflow-hidden`}>
+                    {service.logo ? (
+                      <img src={service.logo} alt={service.logoAlt} className="w-8 h-8 object-contain" />
+                    ) : (
+                      <Icon size={22} className={service.iconColor} />
+                    )}
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-semibold text-dark font-poppins mb-2 group-hover:text-primary transition-colors duration-200">
+                  <h3 className="text-lg font-semibold text-primary font-poppins mb-2 group-hover:text-accent transition-colors duration-200">
                     {service.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                  <p className="text-sm text-muted leading-relaxed mb-4">
                     {service.description}
                   </p>
 
                   {/* Learn more */}
-                  <div className={`inline-flex items-center gap-1 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-all duration-200 bg-clip-text text-transparent bg-gradient-to-r ${service.color}`}>
-                    Learn More <ChevronRight size={12} className={`${service.iconColor}`} />
+                  <div className="inline-flex items-center gap-1 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-all duration-200 text-accent">
+                    Learn More <ChevronRight size={12} className="text-accent" />
                   </div>
                 </div>
               </motion.div>
@@ -139,7 +149,7 @@ export default function Services() {
         >
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-primary to-secondary shadow-glow hover:shadow-glow-cyan hover:scale-[1.02] transition-all duration-200"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold text-text bg-accent shadow-sm hover:bg-accent/90 hover:scale-[1.02] transition-all duration-200"
           >
             Explore All Services
             <ArrowRight size={16} />
