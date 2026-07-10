@@ -100,8 +100,8 @@ const itemVariants = {
 
 export default function Hero() {
   return (
-    <section id="home" className="relative h-screen flex items-center pt-16 pb-6 overflow-hidden bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <section id="home" className="relative min-h-[100dvh] flex items-center pt-28 lg:pt-20 pb-16 lg:pb-12 overflow-x-hidden overflow-y-auto bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-8 lg:mt-0">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
           {/* Left content */}
@@ -112,9 +112,9 @@ export default function Hero() {
             className="relative z-10"
           >
             {/* Top label */}
-            <motion.div variants={itemVariants} className="flex items-center gap-3 mb-7">
+            <motion.div variants={itemVariants} className="flex items-center gap-3 mb-5 lg:mb-7">
               <div className="w-10 h-[2px] bg-accent flex-shrink-0" />
-              <p className="text-[13px] font-jakarta font-semibold text-muted tracking-[0.1em] uppercase leading-tight">
+              <p className="text-[12px] sm:text-[13px] font-jakarta font-semibold text-muted tracking-[0.1em] uppercase leading-tight">
                 Grow Your E-commerce Business with Expert Marketplace Management
                 </p>
             </motion.div>
@@ -122,7 +122,7 @@ export default function Hero() {
             {/* Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-[48px] font-jakarta font-bold text-primary leading-[1.1] tracking-[-0.02em] mb-6 max-w-[600px]"
+              className="text-4xl sm:text-5xl lg:text-[48px] font-jakarta font-bold text-primary leading-[1.15] tracking-[-0.02em] mb-6 max-w-[600px]"
             >
               Scale Your Sales on<br />
               Amazon, Flipkart & more<br />
