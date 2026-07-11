@@ -50,16 +50,7 @@ export default function FreeConsultation() {
             </ul>
           </div>
           
-          <div className="relative z-10 md:w-1/3 shrink-0">
-            <div className="aspect-square rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md p-8 flex flex-col items-center justify-center text-center">
-              <div className="w-16 h-16 rounded-2xl bg-accent flex items-center justify-center mb-4">
-                <Target size={32} className="text-dark" />
-              </div>
-              <p className="text-white font-bold font-poppins text-xl leading-tight">
-                Unlock Your <br/>Growth Potential
-              </p>
-            </div>
-          </div>
+
         </motion.div>
       </div>
     </section>

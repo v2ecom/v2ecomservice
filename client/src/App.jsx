@@ -14,6 +14,18 @@ import FaqPage from './pages/FaqPage';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 
+// Service Pages
+import AmazonAccountManagement from './pages/services/AmazonAccountManagement';
+import AmazonPPCManagement from './pages/services/AmazonPPCManagement';
+import ProductListingOptimization from './pages/services/ProductListingOptimization';
+import FlipkartAccountManagement from './pages/services/FlipkartAccountManagement';
+import MeeshoAccountManagement from './pages/services/MeeshoAccountManagement';
+import MarketplaceOnboarding from './pages/services/MarketplaceOnboarding';
+import ProductResearch from './pages/services/ProductResearch';
+import EcommerceConsulting from './pages/services/EcommerceConsulting';
+import CatalogManagement from './pages/services/CatalogManagement';
+import AccountHealthManagement from './pages/services/AccountHealthManagement';
+
 function App() {
   return (
     <Router>
@@ -29,6 +41,18 @@ function App() {
             <Route path="/faq" element={<FaqPage />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
+
+            {/* Individual Service Routes */}
+            <Route path="/services/amazon-account-management" element={<AmazonAccountManagement />} />
+            <Route path="/services/amazon-ppc-management" element={<AmazonPPCManagement />} />
+            <Route path="/services/product-listing-optimization" element={<ProductListingOptimization />} />
+            <Route path="/services/flipkart-account-management" element={<FlipkartAccountManagement />} />
+            <Route path="/services/meesho-account-management" element={<MeeshoAccountManagement />} />
+            <Route path="/services/marketplace-onboarding" element={<MarketplaceOnboarding />} />
+            <Route path="/services/product-research" element={<ProductResearch />} />
+            <Route path="/services/ecommerce-consulting" element={<EcommerceConsulting />} />
+            <Route path="/services/catalog-management" element={<CatalogManagement />} />
+            <Route path="/services/account-health-management" element={<AccountHealthManagement />} />
           </Routes>
         </main>
         <Footer />

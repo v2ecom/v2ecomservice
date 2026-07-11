@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function ContactHero() {
   return (
-    <section className="pt-32 pb-16 relative overflow-hidden bg-background">
+    <section className="pt-24 sm:pt-32 pb-12 sm:pb-16 relative overflow-hidden bg-background">
       <div className="absolute inset-0 bg-mesh pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
       
@@ -22,7 +22,7 @@ export default function ContactHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl sm:text-5xl lg:text-[60px] font-bold text-primary font-poppins leading-[1.1] tracking-tight mb-8"
+          className="text-[28px] sm:text-4xl md:text-5xl lg:text-[60px] font-bold text-primary font-poppins leading-[1.1] tracking-tight mb-6 sm:mb-8"
         >
           Let's Grow Your Ecommerce Business <span className="text-accent">Together</span>
         </motion.h1>
@@ -31,7 +31,7 @@ export default function ContactHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="space-y-6 text-lg text-muted leading-relaxed max-w-3xl mx-auto"
+          className="space-y-4 sm:space-y-6 text-sm sm:text-base lg:text-lg text-muted leading-relaxed max-w-3xl mx-auto"
         >
           <p>
             Have questions about selling on Amazon, Flipkart, or other marketplaces? Looking for expert support to increase your sales and streamline your marketplace operations?

@@ -9,7 +9,10 @@ export function SectionHeader({ tag, title, highlight, description, center = tru
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase bg-background text-primary border border-border mb-4"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full
+                     text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase
+                     bg-background text-primary border border-border mb-5"
+          style={{ fontFamily: 'Inter, sans-serif' }}
         >
           {tag}
         </motion.div>
@@ -19,14 +22,18 @@ export function SectionHeader({ tag, title, highlight, description, center = tru
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary font-poppins mb-4"
+        className="mb-4"
+        style={{
+          fontFamily:    'Inter, sans-serif',
+          fontWeight:    700,
+          fontSize:      'clamp(26px, 3.5vw, 34px)',
+          lineHeight:    1.2,
+          letterSpacing: '-0.02em',
+          color:         '#243B6B',
+        }}
       >
         {title}{' '}
-        {highlight && (
-          <span className="text-accent">
-            {highlight}
-          </span>
-        )}
+        {highlight && <span className="text-accent">{highlight}</span>}
       </motion.h2>
       {description && (
         <motion.p
@@ -34,7 +41,12 @@ export function SectionHeader({ tag, title, highlight, description, center = tru
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className={`text-muted text-lg leading-relaxed ${center ? 'max-w-2xl mx-auto' : 'max-w-xl'}`}
+          className={`text-muted leading-relaxed ${center ? 'max-w-2xl mx-auto' : 'max-w-xl'}`}
+          style={{
+            fontFamily: 'Inter, sans-serif',
+            fontWeight: 400,
+            fontSize:   'clamp(13px, 1.6vw, 15px)',
+          }}
         >
           {description}
         </motion.p>

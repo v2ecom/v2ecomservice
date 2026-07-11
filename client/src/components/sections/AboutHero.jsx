@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function AboutHero() {
   return (
-    <section className="pt-32 pb-16 bg-background relative overflow-hidden">
+    <section className="pt-24 sm:pt-32 pb-12 sm:pb-16 bg-background relative overflow-hidden">
       <div className="absolute inset-0 bg-mesh pointer-events-none" />
 
       <div className="container-base relative z-10">
@@ -25,7 +25,7 @@ export default function AboutHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-[64px] font-bold text-primary font-poppins leading-[1.1] tracking-tight mb-8"
+            className="text-[28px] sm:text-4xl md:text-5xl lg:text-[64px] font-bold text-primary font-poppins leading-[1.1] tracking-tight mb-6 sm:mb-8"
           >
             Trusted<br />
             Marketplace Partner
@@ -36,7 +36,7 @@ export default function AboutHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-6 text-lg sm:text-xl text-muted leading-relaxed"
+            className="space-y-4 sm:space-y-6 text-sm sm:text-base lg:text-xl text-muted leading-relaxed"
           >
             <p>
               At V2 Ecom Services, we are committed to helping businesses succeed across India's leading e-commerce marketplaces through expert guidance, proven strategies, and dedicated support.
