@@ -105,20 +105,7 @@ const whoBenefits = [
   'Importers and exporters',
 ];
 
-const faqs = [
-  {
-    q: 'Do you manage complete Amazon seller accounts?',
-    a: 'Yes. We handle listings, advertising, catalog management, account health, reporting, and growth strategies.',
-  },
-  {
-    q: 'Can you improve existing listings?',
-    a: 'Yes. We optimize titles, descriptions, keywords, images, and backend attributes to improve visibility and conversions.',
-  },
-  {
-    q: 'Do you provide regular reports?',
-    a: 'Yes. We provide weekly and monthly performance reports with actionable recommendations.',
-  },
-];
+
 
 export default function AmazonAccountManagement() {
   return (
@@ -135,7 +122,6 @@ export default function AmazonAccountManagement() {
       whyChoose={whyChoose}
       steps={steps}
       whoBenefits={whoBenefits}
-      faqs={faqs}
     />
   );
 }

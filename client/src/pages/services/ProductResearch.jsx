@@ -101,20 +101,7 @@ const whoBenefits = [
   'Importers and exporters',
 ];
 
-const faqs = [
-  {
-    q: 'Can you help me decide which products to sell?',
-    a: 'Yes. Our research identifies profitable, in-demand products suited to your business and budget.',
-  },
-  {
-    q: 'Do you analyze specific competitors?',
-    a: 'Yes. We provide detailed benchmarking against competitors you specify or ones we identify in your category.',
-  },
-  {
-    q: 'How is the research delivered?',
-    a: 'We provide detailed reports with clear insights and actionable recommendations.',
-  },
-];
+
 
 export default function ProductResearch() {
   return (
@@ -131,7 +118,6 @@ export default function ProductResearch() {
       whyChoose={whyChoose}
       steps={steps}
       whoBenefits={whoBenefits}
-      faqs={faqs}
     />
   );
 }

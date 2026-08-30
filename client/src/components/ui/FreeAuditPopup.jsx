@@ -7,6 +7,9 @@ const HIDE_POPUP_KEY = 'v2ecom_audit_popup_hidden_until';
 export default function FreeAuditPopup() {
   const [isVisible, setIsVisible] = useState(false);
   const [hasDismissed, setHasDismissed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState(null);
+  const [fallbackData, setFallbackData] = useState(null);
 
   useEffect(() => {
     const forceOpenPopup = () => setIsVisible(true);
@@ -67,10 +70,51 @@ export default function FreeAuditPopup() {
     localStorage.setItem(HIDE_POPUP_KEY, sevenDaysFromNow.toString());
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Thank you! Your audit request has been received. We will contact you shortly.');
-    handleClose();
+    setIsSubmitting(true);
+    setSubmitResult(null);
+
+    const formData = new FormData(e.target);
+    const dataObj = Object.fromEntries(formData.entries());
+    setFallbackData(dataObj);
+
+    // VITE_WEB3FORMS_ACCESS_KEY should be added in .env.local
+    formData.append('access_key', import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KEY_HERE');
+    formData.append('subject', 'New Free Audit Request from V2 Ecom');
+    formData.append('from_name', 'V2 Ecom Website');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await response.json();
+      
+      if (data.success) {
+        setSubmitResult('success');
+        setTimeout(() => {
+          handleClose();
+          setSubmitResult(null);
+        }, 3000);
+      } else {
+        setSubmitResult('error');
+      }
+    } catch (error) {
+      setSubmitResult('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const getGmailLink = () => {
+    if (!fallbackData) return '#';
+    const { name, company, phone, email, marketplace, monthly_sales } = fallbackData;
+    const subject = encodeURIComponent('New Free Audit Request from V2 Ecom');
+    const body = encodeURIComponent(
+      `Name: ${name}\nCompany: ${company}\nPhone: ${phone}\nEmail: ${email}\nMarketplace: ${marketplace}\nMonthly Sales: ${monthly_sales}`
+    );
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=vivek@v2ecomservices.com&su=${subject}&body=${body}`;
   };
 
   return (
@@ -145,28 +189,28 @@ export default function FreeAuditPopup() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-primary uppercase tracking-wide">Name</label>
-                    <input type="text" required className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent outline-none text-sm" />
+                    <input type="text" name="name" required className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent outline-none text-sm" />
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-primary uppercase tracking-wide">Company Name</label>
-                    <input type="text" required className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent outline-none text-sm" />
+                    <input type="text" name="company" required className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent outline-none text-sm" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-primary uppercase tracking-wide">Phone Number</label>
-                    <input type="tel" required className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent outline-none text-sm" />
+                    <input type="tel" name="phone" required className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent outline-none text-sm" />
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-primary uppercase tracking-wide">Email Address</label>
-                    <input type="email" required className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent outline-none text-sm" />
+                    <input type="email" name="email" required className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent outline-none text-sm" />
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-primary uppercase tracking-wide">Marketplace</label>
-                  <select required className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent outline-none text-sm text-primary appearance-none">
+                  <select name="marketplace" required className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent outline-none text-sm text-primary appearance-none">
                     <option value="">Select a marketplace...</option>
                     <option value="amazon">Amazon</option>
                     <option value="flipkart">Flipkart</option>
@@ -177,7 +221,7 @@ export default function FreeAuditPopup() {
 
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-primary uppercase tracking-wide">Monthly Sales (Optional)</label>
-                  <select className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent outline-none text-sm text-primary appearance-none">
+                  <select name="monthly_sales" className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent outline-none text-sm text-primary appearance-none">
                     <option value="">Select a range...</option>
                     <option value="new">Just Starting Out</option>
                     <option value="1-5">₹1L - ₹5L</option>
@@ -186,9 +230,27 @@ export default function FreeAuditPopup() {
                   </select>
                 </div>
 
-                <button type="submit" className="w-full py-4 mt-2 rounded-xl bg-primary text-white font-bold hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                  Get My Free Audit
+                <button type="submit" disabled={isSubmitting} className="w-full py-4 mt-2 rounded-xl bg-primary text-white font-bold hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed">
+                  {isSubmitting ? 'Sending Request...' : 'Get My Free Audit'}
                 </button>
+                {submitResult === 'success' && (
+                  <p className="text-sm text-center text-green-600 font-medium mt-2">Request sent successfully! We will contact you soon.</p>
+                )}
+                {submitResult === 'error' && (
+                  <div className="mt-4 p-4 rounded-xl bg-red-50 border border-red-100 flex flex-col items-center">
+                    <p className="text-sm text-center text-red-600 font-medium mb-3">Our submission limit has been reached. Please send your request directly via email.</p>
+                    <div className="flex flex-wrap justify-center gap-3">
+                      <a 
+                        href={getGmailLink()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2.5 rounded-lg bg-red-600 text-white text-sm font-bold hover:bg-red-700 transition-colors shadow-sm inline-block"
+                      >
+                        Open in Gmail
+                      </a>
+                    </div>
+                  </div>
+                )}
                 <p className="text-xs text-center text-muted mt-4">We respect your privacy. No spam.</p>
               </form>
             </div>

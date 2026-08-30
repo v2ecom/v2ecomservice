@@ -104,20 +104,7 @@ const whoBenefits = [
   'Importers and exporters',
 ];
 
-const faqs = [
-  {
-    q: 'Which marketplaces do you optimize listings for?',
-    a: 'We optimize listings for Amazon, Flipkart, and Meesho, tailored to each platform\'s algorithm and audience.',
-  },
-  {
-    q: 'Can you rewrite my existing listings?',
-    a: 'Yes. We audit and rewrite titles, bullet points, descriptions, and backend keywords for better performance.',
-  },
-  {
-    q: 'How often do you update listings?',
-    a: 'We recommend periodic refreshes based on performance data, typically every few months or after major algorithm changes.',
-  },
-];
+
 
 export default function ProductListingOptimization() {
   return (
@@ -134,7 +121,6 @@ export default function ProductListingOptimization() {
       whyChoose={whyChoose}
       steps={steps}
       whoBenefits={whoBenefits}
-      faqs={faqs}
     />
   );
 }

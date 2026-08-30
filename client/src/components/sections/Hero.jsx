@@ -148,8 +148,10 @@ export default function Hero() {
 
             {/* CTA Buttons — 16px desktop / 15px mobile, weight 600 */}
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row flex-wrap gap-3">
-              <MotionLink
-                to="/contact"
+              <motion.a
+                href="https://wa.me/919629212489?text=Hi!%20I'm%20interested%20in%20V2%20Ecom%20Services.%20I'd%20like%20to%20discuss%20how%20you%20can%20help%20me%20scale%20my%20marketplace%20business."
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-primary text-white shadow-sm hover:bg-primary/90 transition-all duration-200"
@@ -157,7 +159,7 @@ export default function Hero() {
               >
                 Book a Free Consultation
                 <ArrowRight size={15} />
-              </MotionLink>
+              </motion.a>
 
               <motion.button
                 onClick={() => window.dispatchEvent(new CustomEvent('openAuditPopup'))}

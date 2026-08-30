@@ -4,8 +4,6 @@ import Services from '../components/sections/Services';
 import ProcessTimeline from '../components/sections/ProcessTimeline';
 import IndustriesWeServe from '../components/sections/IndustriesWeServe';
 import OurCommitment from '../components/sections/OurCommitment';
-import FAQ from '../components/sections/FAQ';
-import FinalCTA from '../components/sections/FinalCTA';
 
 export default function Home() {
   return (
@@ -16,8 +14,6 @@ export default function Home() {
       <ProcessTimeline />
       <IndustriesWeServe />
       <OurCommitment />
-      <FAQ />
-      <FinalCTA />
     </>
   );
 }

@@ -32,11 +32,52 @@ export default function ContactLayout() {
     message: ''
   });
 
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState(null);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log(formData);
-    alert("Thank you! Your message has been sent.");
+    setIsSubmitting(true);
+    setSubmitResult(null);
+
+    const data = new FormData(e.target);
+    // VITE_WEB3FORMS_ACCESS_KEY should be added in .env.local
+    data.append('access_key', import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KEY_HERE');
+    data.append('subject', 'New Contact Form Message from V2 Ecom');
+    data.append('from_name', 'V2 Ecom Website');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data
+      });
+      const result = await response.json();
+      
+      if (result.success) {
+        setSubmitResult('success');
+        e.target.reset(); // Reset form visually
+        setFormData({ // Reset state
+          name: '', company: '', email: '', phone: '', location: '',
+          marketplaces: '', category: '', sales: '', services: '', message: ''
+        });
+        setTimeout(() => setSubmitResult(null), 5000);
+      } else {
+        setSubmitResult('error');
+      }
+    } catch (error) {
+      setSubmitResult('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const getGmailLink = () => {
+    const { name, company, email, phone, location, sales, marketplaces, category, services, message } = formData;
+    const subject = encodeURIComponent('New Contact Form Message from V2 Ecom');
+    const body = encodeURIComponent(
+      `Name: ${name}\nCompany: ${company}\nEmail: ${email}\nPhone: ${phone}\nLocation: ${location}\nMonthly Sales: ${sales}\nMarketplaces: ${marketplaces}\nCategory: ${category}\nServices Required: ${services}\n\nMessage:\n${message}`
+    );
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=vivek@v2ecomservices.com&su=${subject}&body=${body}`;
   };
 
   const handleChange = (e) => {
@@ -212,9 +253,27 @@ export default function ContactLayout() {
               </div>
 
               <div className="pt-2">
-                <button type="submit" className="w-full md:w-auto md:px-12 py-4 rounded-xl bg-primary text-white font-bold hover:bg-primary/90 transition-all flex items-center justify-center gap-2 mx-auto shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                  Request a Free Consultation <Send size={18} />
+                <button type="submit" disabled={isSubmitting} className="w-full md:w-auto md:px-12 py-4 rounded-xl bg-primary text-white font-bold hover:bg-primary/90 transition-all flex items-center justify-center gap-2 mx-auto shadow-lg hover:shadow-xl hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed">
+                  {isSubmitting ? 'Sending Request...' : 'Request a Free Consultation'} <Send size={18} />
                 </button>
+                {submitResult === 'success' && (
+                  <p className="text-sm text-center text-green-600 font-medium mt-3">Your message has been sent successfully! We will get back to you soon.</p>
+                )}
+                {submitResult === 'error' && (
+                  <div className="mt-4 p-4 rounded-xl bg-red-50 border border-red-100 flex flex-col items-center">
+                    <p className="text-sm text-center text-red-600 font-medium mb-3">Our submission limit has been reached. Please send your message directly via email.</p>
+                    <div className="flex flex-wrap justify-center gap-3">
+                      <a 
+                        href={getGmailLink()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2.5 rounded-lg bg-red-600 text-white text-sm font-bold hover:bg-red-700 transition-colors shadow-sm inline-block"
+                      >
+                        Open in Gmail
+                      </a>
+                    </div>
+                  </div>
+                )}
               </div>
             </form>
           </div>

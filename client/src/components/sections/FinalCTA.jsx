@@ -66,7 +66,9 @@ export default function FinalCTA({ title, description }) {
             className="flex flex-wrap items-center justify-center gap-4"
           >
             <motion.a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=v2ecomservices@gmail.com"
+              href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-base font-semibold text-dark bg-accent shadow-sm hover:bg-accent/90 transition-all duration-200"

@@ -100,20 +100,7 @@ const whoBenefits = [
   'Importers and exporters',
 ];
 
-const faqs = [
-  {
-    q: 'Which marketplaces can you help me onboard on?',
-    a: 'We assist with onboarding on Amazon, Flipkart, Meesho, and other major Indian marketplaces.',
-  },
-  {
-    q: 'Do you help with restricted category approvals?',
-    a: 'Yes. We guide you through documentation and approval processes for gated categories.',
-  },
-  {
-    q: 'How long does onboarding take?',
-    a: 'Timelines vary by marketplace and category, but we work to complete onboarding as efficiently as possible.',
-  },
-];
+
 
 export default function MarketplaceOnboarding() {
   return (
@@ -130,7 +117,6 @@ export default function MarketplaceOnboarding() {
       whyChoose={whyChoose}
       steps={steps}
       whoBenefits={whoBenefits}
-      faqs={faqs}
     />
   );
 }

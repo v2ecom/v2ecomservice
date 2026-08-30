@@ -400,12 +400,14 @@ export default function CaseStudies() {
               <p className="text-white/80 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
                 Book a free consultation today and discover how our marketplace experts can help your business achieve sustainable growth.
               </p>
-              <Link
-                to="/contact"
+              <a
+                href="https://wa.me/919629212489?text=Hi!%20I'm%20interested%20in%20V2%20Ecom%20Services.%20I'd%20like%20to%20discuss%20how%20you%20can%20help%20me%20scale%20my%20marketplace%20business."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-accent text-dark font-bold hover:bg-accent/90 transition-transform hover:scale-105 shadow-md"
               >
                 Book a Free Consultation <ArrowRight size={18} />
-              </Link>
+              </a>
             </div>
           </motion.div>
         </div>

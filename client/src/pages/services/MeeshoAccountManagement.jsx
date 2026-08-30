@@ -104,20 +104,7 @@ const whoBenefits = [
   'Importers and exporters',
 ];
 
-const faqs = [
-  {
-    q: 'Do you manage complete Meesho seller accounts?',
-    a: 'Yes. We handle listings, catalog management, pricing, account health, and growth strategies.',
-  },
-  {
-    q: 'Can you help reduce return rates?',
-    a: 'Yes. We optimize listings and sizing information to set accurate buyer expectations and reduce returns.',
-  },
-  {
-    q: 'Do you provide regular reports?',
-    a: 'Yes. We provide regular performance reports with actionable recommendations.',
-  },
-];
+
 
 export default function MeeshoAccountManagement() {
   return (
@@ -134,7 +121,6 @@ export default function MeeshoAccountManagement() {
       whyChoose={whyChoose}
       steps={steps}
       whoBenefits={whoBenefits}
-      faqs={faqs}
     />
   );
 }

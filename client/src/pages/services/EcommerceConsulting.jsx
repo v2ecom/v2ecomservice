@@ -100,20 +100,7 @@ const whoBenefits = [
   'Importers and exporters',
 ];
 
-const faqs = [
-  {
-    q: 'Do you work with businesses already selling online?',
-    a: 'Yes. We work with both new sellers and established businesses looking to scale or restructure operations.',
-  },
-  {
-    q: 'Is consulting a one-time or ongoing service?',
-    a: 'We offer both one-time strategy engagements and ongoing advisory partnerships, based on your needs.',
-  },
-  {
-    q: 'Do you help with multi-marketplace strategy?',
-    a: 'Yes. We advise on channel prioritization and strategy across Amazon, Flipkart, Meesho, and D2C platforms.',
-  },
-];
+
 
 export default function EcommerceConsulting() {
   return (
@@ -130,7 +117,6 @@ export default function EcommerceConsulting() {
       whyChoose={whyChoose}
       steps={steps}
       whoBenefits={whoBenefits}
-      faqs={faqs}
     />
   );
 }

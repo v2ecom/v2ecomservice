@@ -18,46 +18,7 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.06 } },
 };
 
-/* ── FAQ Item ── */
-function FaqItem({ question, answer, index }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <motion.div
-      custom={index}
-      variants={fadeUp}
-      className="border border-border rounded-xl overflow-hidden"
-    >
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-4 sm:px-6 py-4 text-left bg-surface hover:bg-background transition-colors duration-200 group"
-      >
-        <span
-          className="text-primary font-semibold pr-3 text-[12px] sm:text-[13px]"
-          style={{ fontFamily: 'Inter, sans-serif' }}
-        >{question}</span>
-        <span className="shrink-0 w-7 h-7 rounded-full bg-background border border-border flex items-center justify-center text-muted group-hover:border-primary/30 transition-colors">
-          {open ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-        </span>
-      </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            key="content"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: 'easeInOut' }}
-            className="overflow-hidden"
-          >
-            <div className="px-4 sm:px-6 py-4 text-muted text-sm leading-relaxed border-t border-border bg-background/50">
-              {answer}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-}
+
 
 /* ── Main Template ── */
 export default function ServicePageTemplate({
@@ -75,7 +36,6 @@ export default function ServicePageTemplate({
   whyChoose = [],
   steps = [],
   whoBenefits = [],
-  faqs = [],
 }) {
   return (
     <div className="pt-16 lg:pt-20">
@@ -178,13 +138,15 @@ export default function ServicePageTemplate({
               transition={{ duration: 0.45, delay: 0.25 }}
               className="flex flex-col sm:flex-row gap-3"
             >
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent('openAuditPopup'))}
+              <a
+                href="https://wa.me/919629212489?text=Hi!%20I'm%20interested%20in%20V2%20Ecom%20Services.%20I'd%20like%20to%20discuss%20how%20you%20can%20help%20me%20scale%20my%20marketplace%20business."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-dark bg-accent hover:bg-accent/90 shadow-sm active:scale-[0.98] hover:scale-[1.02] transition-all duration-200 w-full sm:w-auto"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: 'clamp(13px, 1.5vw, 14px)' }}
               >
                 Book Free Consultation <ArrowRight size={15} />
-              </button>
+              </a>
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold text-primary border border-border hover:border-primary/40 hover:bg-background transition-all duration-200 w-full sm:w-auto"
@@ -469,50 +431,6 @@ export default function ServicePageTemplate({
         </section>
       )}
 
-      {/* ── FAQs ── */}
-      {faqs.length > 0 && (
-        <section className="py-14 sm:py-20 lg:py-28 bg-section relative overflow-hidden">
-          <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
-          <div className="container-base relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-8 sm:mb-12"
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase bg-background text-primary border border-border mb-3 sm:mb-4">
-                FAQ
-              </div>
-              <h2
-                className="mb-0"
-                style={{
-                  fontFamily:    'Inter, sans-serif',
-                  fontWeight:    700,
-                  fontSize:      'clamp(26px, 3.5vw, 34px)',
-                  lineHeight:    1.2,
-                  letterSpacing: '-0.02em',
-                  color:         '#243B6B',
-                }}
-              >
-                Frequently Asked <span className="text-accent">Questions</span>
-              </h2>
-            </motion.div>
-
-            <motion.div
-              variants={stagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="max-w-3xl mx-auto space-y-2.5 sm:space-y-3"
-            >
-              {faqs.map((faq, i) => (
-                <FaqItem key={i} question={faq.q} answer={faq.a} index={i} />
-              ))}
-            </motion.div>
-          </div>
-        </section>
-      )}
 
       {/* ── FINAL CTA ── */}
       <section className="py-16 sm:py-20 bg-primary relative overflow-hidden">
@@ -550,13 +468,15 @@ export default function ServicePageTemplate({
               Partner with V2 Ecom Services and let our experts manage your marketplace business while you focus on growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent('openAuditPopup'))}
+              <a
+                href="https://wa.me/919629212489?text=Hi!%20I'm%20interested%20in%20V2%20Ecom%20Services.%20I'd%20like%20to%20discuss%20how%20you%20can%20help%20me%20scale%20my%20marketplace%20business."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold text-dark bg-accent hover:bg-accent/90 shadow-lg active:scale-[0.98] hover:scale-[1.02] transition-all duration-200"
                 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: 'clamp(13px, 1.5vw, 14px)' }}
               >
                 Book a Free Consultation <ArrowRight size={15} />
-              </button>
+              </a>
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold text-white border border-white/30 hover:bg-white/10 active:scale-[0.98] transition-all duration-200"

@@ -105,20 +105,7 @@ const whoBenefits = [
   'Importers and exporters',
 ];
 
-const faqs = [
-  {
-    q: 'Do you manage complete Flipkart seller accounts?',
-    a: 'Yes. We handle listings, advertising, catalog management, account health, reporting, and growth strategies.',
-  },
-  {
-    q: 'Can you help during Flipkart sale events?',
-    a: 'Yes. We plan pricing, inventory, and promotional strategies to maximize performance during major sale events.',
-  },
-  {
-    q: 'Do you provide regular reports?',
-    a: 'Yes. We provide weekly and monthly performance reports with actionable recommendations.',
-  },
-];
+
 
 export default function FlipkartAccountManagement() {
   return (
@@ -135,7 +122,6 @@ export default function FlipkartAccountManagement() {
       whyChoose={whyChoose}
       steps={steps}
       whoBenefits={whoBenefits}
-      faqs={faqs}
     />
   );
 }

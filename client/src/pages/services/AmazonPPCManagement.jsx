@@ -105,20 +105,7 @@ const whoBenefits = [
   'Importers and exporters',
 ];
 
-const faqs = [
-  {
-    q: 'Do you manage PPC for new product launches?',
-    a: 'Yes. We design aggressive launch strategies to build rankings quickly while controlling spend.',
-  },
-  {
-    q: 'Will you lower my advertising costs?',
-    a: 'Yes. Our optimization process focuses on improving ad efficiency while maintaining or growing sales volume.',
-  },
-  {
-    q: 'Do you provide regular reports?',
-    a: 'Yes. We provide weekly and monthly reports with clear performance insights and next steps.',
-  },
-];
+
 
 export default function AmazonPPCManagement() {
   return (
@@ -135,7 +122,6 @@ export default function AmazonPPCManagement() {
       whyChoose={whyChoose}
       steps={steps}
       whoBenefits={whoBenefits}
-      faqs={faqs}
     />
   );
 }

@@ -101,20 +101,7 @@ const whoBenefits = [
   'Importers and exporters',
 ];
 
-const faqs = [
-  {
-    q: 'Can you help reinstate a suspended account?',
-    a: 'Yes. We prepare and submit appeals to help resolve suspensions and restrictions.',
-  },
-  {
-    q: 'Do you monitor account health proactively?',
-    a: 'Yes. We continuously track performance metrics and policy compliance to prevent issues before they occur.',
-  },
-  {
-    q: 'Do you provide regular reports?',
-    a: 'Yes. We provide regular account health reports with clear risk insights and recommendations.',
-  },
-];
+
 
 export default function AccountHealthManagement() {
   return (
@@ -131,7 +118,6 @@ export default function AccountHealthManagement() {
       whyChoose={whyChoose}
       steps={steps}
       whoBenefits={whoBenefits}
-      faqs={faqs}
     />
   );
 }

@@ -154,7 +154,7 @@ export default function Navbar() {
                                       <span className="text-xs">{service.emoji}</span>
                                     )}
                                     </div>
-                                  <span className="text-[10px] font-medium text-primary font-jakarta leading-tight group-hover:text-accent transition-colors duration-150">
+                                  <span className="text-sm font-medium text-primary font-jakarta leading-tight group-hover:text-accent transition-colors duration-150">
                                     {service.label}
                                   </span>
                                 </Link>
@@ -163,13 +163,16 @@ export default function Navbar() {
 
                             {/* Footer */}
                             <div className="px-4 py-2.5 bg-section border-t border-border flex items-center justify-between gap-2">
-                              <span className="text-[9px] text-muted font-jakarta">Need help choosing a service?</span>
-                              <button
-                                onClick={() => { setServicesOpen(false); window.dispatchEvent(new CustomEvent('openAuditPopup')); }}
-                                className="text-[9px] font-semibold text-accent hover:text-accent/80 font-jakarta flex items-center gap-1 transition-colors whitespace-nowrap"
+                              <span className="text-[11px] text-muted font-jakarta">Need help choosing a service?</span>
+                              <a
+                                href="https://wa.me/919629212489?text=Hi!%20I'm%20interested%20in%20V2%20Ecom%20Services.%20I'd%20like%20to%20discuss%20how%20you%20can%20help%20me%20scale%20my%20marketplace%20business."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setServicesOpen(false)}
+                                className="text-[11px] font-semibold text-accent hover:text-accent/80 font-jakarta flex items-center gap-1 transition-colors whitespace-nowrap"
                               >
                                 Free Consultation <ArrowRight size={10} />
-                              </button>
+                              </a>
                             </div>
                           </motion.div>
                         )}
@@ -198,15 +201,17 @@ export default function Navbar() {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
-              <motion.button
-                onClick={() => window.dispatchEvent(new CustomEvent('openAuditPopup'))}
+              <motion.a
+                href="https://wa.me/919629212489?text=Hi!%20I'm%20interested%20in%20V2%20Ecom%20Services.%20I'd%20like%20to%20discuss%20how%20you%20can%20help%20me%20scale%20my%20marketplace%20business."
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 className="relative inline-flex items-center gap-2 px-4 xl:px-5 py-2.5 rounded-xl text-[13px] lg:text-[14px] font-semibold text-dark bg-accent hover:bg-accent/90 shadow-sm transition-all duration-200"
               >
                 <span className="absolute inset-0 rounded-xl bg-accent opacity-60 animate-ping" style={{ animationDuration: '2s' }}></span>
                 <span className="relative z-10 flex items-center gap-2">Book Consultation <ArrowRight size={13} /></span>
-              </motion.button>
+              </motion.a>
             </div>
 
             {/* Mobile/Tablet hamburger */}
@@ -297,7 +302,7 @@ export default function Navbar() {
                                         <span className="text-[11px]">{service.emoji}</span>
                                       )}
                                     </div>
-                                    <span className="text-[11px] font-medium text-slate-700 group-hover:text-primary font-jakarta leading-tight">
+                                    <span className="text-sm font-medium text-slate-700 group-hover:text-primary font-jakarta leading-tight">
                                       {service.label}
                                     </span>
                                   </Link>
@@ -326,13 +331,16 @@ export default function Navbar() {
 
               {/* Drawer footer CTA */}
               <div className="px-4 py-4 border-t border-border">
-                <button
-                  onClick={() => { setMobileOpen(false); window.dispatchEvent(new CustomEvent('openAuditPopup')); }}
+                <a
+                  href="https://wa.me/919629212489?text=Hi!%20I'm%20interested%20in%20V2%20Ecom%20Services.%20I'd%20like%20to%20discuss%20how%20you%20can%20help%20me%20scale%20my%20marketplace%20business."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
                   className="relative flex items-center justify-center gap-2 w-full py-3.5 rounded-xl text-[13px] font-jakarta font-semibold text-dark bg-accent hover:bg-accent/90 overflow-hidden active:scale-[0.98] transition-all"
                 >
                   <span className="absolute inset-0 bg-accent opacity-60 animate-ping" style={{ animationDuration: '2s' }}></span>
                   <span className="relative z-10 flex items-center gap-2">Book Consultation <ArrowRight size={14} /></span>
-                </button>
+                </a>
               </div>
             </motion.div>
           </>

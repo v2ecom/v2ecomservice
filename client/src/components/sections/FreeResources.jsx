@@ -1,13 +1,50 @@
 import { motion } from 'framer-motion';
-import { Download, FileText, CheckCircle2 } from 'lucide-react';
+import { Download, FileText, CheckCircle2, ExternalLink } from 'lucide-react';
+
+import amazonListingPdf from '../../assets/resources/amazon-listing-optimization-checklist.pdf';
+import marketplaceLaunchPdf from '../../assets/resources/marketplace-launch-checklist.pdf';
+import productResearchPdf from '../../assets/resources/product-research-guide.pdf';
+import advertisingPerformancePdf from '../../assets/resources/advertising-performance-checklist.pdf';
+import ecommerceGrowthPdf from '../../assets/resources/ecommerce-growth-resources.pdf';
+import industryTipsPdf from '../../assets/resources/industry-tips-best-practices.pdf';
 
 const resources = [
-  'Amazon Listing Optimization Checklist',
-  'Marketplace Launch Checklist',
-  'Product Research Guide',
-  'Advertising Performance Checklist',
-  'E-commerce Growth Resources',
-  'Industry Tips and Best Practices',
+  {
+    title: 'Amazon Listing Optimization Checklist',
+    description: 'Complete guide to optimizing product listings for maximum conversion on Amazon.',
+    url: amazonListingPdf,
+    filename: 'amazon-listing-optimization-checklist.pdf',
+  },
+  {
+    title: 'Marketplace Launch Checklist',
+    description: 'Step-by-step launch roadmap for multi-channel seller success.',
+    url: marketplaceLaunchPdf,
+    filename: 'marketplace-launch-checklist.pdf',
+  },
+  {
+    title: 'Product Research Guide',
+    description: 'Proven framework for identifying high-margin products to sell online.',
+    url: productResearchPdf,
+    filename: 'product-research-guide.pdf',
+  },
+  {
+    title: 'Advertising Performance Checklist',
+    description: 'Optimize your PPC campaigns, reduce ACoS, and scale ad ROI.',
+    url: advertisingPerformancePdf,
+    filename: 'advertising-performance-checklist.pdf',
+  },
+  {
+    title: 'E-commerce Growth Resources',
+    description: 'Essential toolkits, templates, and frameworks for scaling e-commerce.',
+    url: ecommerceGrowthPdf,
+    filename: 'ecommerce-growth-resources.pdf',
+  },
+  {
+    title: 'Industry Tips and Best Practices',
+    description: 'Expert strategies, policy updates, and operational best practices.',
+    url: industryTipsPdf,
+    filename: 'industry-tips-best-practices.pdf',
+  },
 ];
 
 const whyQA = [
@@ -43,7 +80,7 @@ export default function FreeResources() {
             Free <span className="text-accent">Resources</span>
           </h2>
           <p className="text-muted mt-3 max-w-xl leading-relaxed">
-            Access practical tools and resources designed to help marketplace sellers grow their business.
+            Access practical tools and downloadable resources designed to help marketplace sellers grow their business.
           </p>
         </div>
 
@@ -55,22 +92,51 @@ export default function FreeResources() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            className="space-y-5"
+            className="space-y-4"
           >
             {resources.map((resource, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ x: 4, transition: { duration: 0.2 } }}
-                className="flex items-center justify-between p-5 rounded-2xl bg-surface border border-border shadow-sm hover:shadow-card hover:border-primary/30 transition-all cursor-pointer group"
+                whileHover={{ y: -2, transition: { duration: 0.2 } }}
+                className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-surface border border-border shadow-sm hover:shadow-card hover:border-primary/30 transition-all group"
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-dark transition-colors shrink-0">
-                    <FileText size={18} />
+                <div className="flex items-start sm:items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-accent group-hover:text-dark transition-colors shrink-0">
+                    <FileText size={22} />
                   </div>
-                  <span className="font-semibold text-primary group-hover:text-accent transition-colors">{resource}</span>
+                  <div>
+                    <h3 className="font-semibold text-primary text-base group-hover:text-accent transition-colors">
+                      {resource.title}
+                    </h3>
+                    <p className="text-xs text-muted mt-1 leading-relaxed">
+                      {resource.description}
+                    </p>
+                  </div>
                 </div>
-                <Download size={18} className="text-muted group-hover:text-accent transition-colors shrink-0 ml-4" />
+
+                <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                  <a
+                    href={resource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-primary bg-primary/5 hover:bg-primary hover:text-white transition-colors"
+                    title="Open PDF in new tab"
+                  >
+                    <ExternalLink size={14} />
+                    <span>View</span>
+                  </a>
+
+                  <a
+                    href={resource.url}
+                    download={resource.filename}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded-lg text-dark bg-accent hover:bg-accent/90 transition-colors shadow-sm"
+                    title="Download PDF file"
+                  >
+                    <Download size={14} />
+                    <span>Download</span>
+                  </a>
+                </div>
               </motion.div>
             ))}
           </motion.div>

@@ -101,20 +101,7 @@ const whoBenefits = [
   'Importers and exporters',
 ];
 
-const faqs = [
-  {
-    q: 'Can you manage large catalogs with thousands of SKUs?',
-    a: 'Yes. We handle bulk catalog uploads and management for catalogs of any size.',
-  },
-  {
-    q: 'Do you fix suppressed or flagged listings?',
-    a: 'Yes. We identify and resolve catalog errors that cause listings to be suppressed or restricted.',
-  },
-  {
-    q: 'Do you provide regular reports?',
-    a: 'Yes. We provide regular catalog health reports with clear recommendations.',
-  },
-];
+
 
 export default function CatalogManagement() {
   return (
@@ -131,7 +118,6 @@ export default function CatalogManagement() {
       whyChoose={whyChoose}
       steps={steps}
       whoBenefits={whoBenefits}
-      faqs={faqs}
     />
   );
 }
