@@ -16,7 +16,7 @@ function DashboardMockup() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
+        transition={{ duration: 0.5, delay: 0.15 }}
         className="bg-white rounded-2xl shadow-[0_24px_80px_rgba(15,23,42,0.08)] border border-slate-100 p-6 relative z-10"
       >
         {/* Card header */}
@@ -69,12 +69,12 @@ function DashboardMockup() {
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
+  visible: { transition: { staggerChildren: 0.05 } },
 };
 
 const itemVariants = {
   hidden:   { opacity: 0, y: 18 },
-  visible:  { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+  visible:  { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' } },
 };
 
 export default function Hero() {
@@ -191,7 +191,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, x: 36 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.85, delay: 0.3, ease: 'easeOut' }}
+          transition={{ duration: 0.5, delay: 0.15, ease: 'easeOut' }}
             className="relative lg:pl-6 flex items-center"
           >
             {/* Subtle glow */}
