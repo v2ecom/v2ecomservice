@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer';
 import FloatingWhatsApp from './components/ui/FloatingWhatsApp';
 import FreeAuditPopup from './components/ui/FreeAuditPopup';
 import ScrollToTop from './components/ui/ScrollToTop';
+import SEOManager from './components/shared/SEOManager';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -30,6 +31,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <SEOManager />
       <div className="min-h-screen bg-surface font-inter flex flex-col">
         <Navbar />
         <main className="flex-grow">
