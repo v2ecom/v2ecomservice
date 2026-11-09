@@ -3,6 +3,7 @@ import { ACADEMY } from '../config/academy';
 import AcademyHero from '../components/academy/AcademyHero';
 import AcademyAbout from '../components/academy/AcademyAbout';
 import AcademyCourses from '../components/academy/AcademyCourses';
+import AcademyCustom from '../components/academy/AcademyCustom';
 import AcademyLearn from '../components/academy/AcademyLearn';
 import AcademyDelivery from '../components/academy/AcademyDelivery';
 import AcademyFAQ from '../components/academy/AcademyFAQ';
@@ -61,6 +62,7 @@ export default function Academy() {
       <AcademyHero onExplore={() => scrollToId('courses')} />
       <AcademyAbout />
       <AcademyCourses onApply={handleApply} />
+      <AcademyCustom />
       <AcademyLearn />
       <AcademyDelivery />
       <AcademyFAQ />

@@ -11,6 +11,8 @@ export const academyFaqs = [
   { q: 'Will I receive a certificate?', a: 'Learners who complete the course receive a course-completion certificate issued by V2 Ecom Academy. It is not a government-accredited qualification.' },
   { q: 'Are weekday evening classes available?', a: 'Yes. Weekday Evening batches are planned. Final timings are confirmed by our team when your batch is set.' },
   { q: 'Are weekend classes available?', a: 'Yes. Weekend batches are planned. Final timings are confirmed by our team when your batch is set.' },
+  { q: 'Do you offer customised training for teams, colleges or students?', a: 'Yes. We plan customised programmes for seller teams, college workshops and student classes. Fees depend on your requirement (group size, topics, duration and mode), so contact us on WhatsApp and our team will share a quote.' },
+  { q: 'Do you cover quick commerce?', a: 'Quick commerce is available as a topic in our customised programmes. Contact our team with your requirement to discuss the scope and fees.' },
   { q: 'How do I complete my admission?', a: `Submit the admission form on this page. Our team will contact you, confirm your course and schedule, and share payment instructions. Admission is confirmed only after payment is verified.` },
   { q: 'How do I contact the academy?', a: `Call or WhatsApp us on ${ACADEMY.phoneDisplay}, or use the admission form. We are based in ${ACADEMY.location}.` },
 ];

@@ -100,18 +100,47 @@ export const ACADEMY = {
     },
   ],
 
+  // Customised programmes (no fixed fee: quoted per requirement). Enquiries go to WhatsApp.
+  customPrograms: {
+    feeNote: 'Fees depend on your requirement: group size, topics, duration and mode (online or offline). Tell us what you need and our team will share a quote.',
+    topics: [
+      'Amazon', 'Flipkart', 'Meesho', 'Myntra', 'Ajio', 'Quick Commerce',
+      'Listing and Cataloguing', 'Marketplace Ads', 'Account Health', 'Reporting and Profit Analysis',
+    ],
+    items: [
+      {
+        id: 'seller-teams',
+        title: 'Seller Team Training',
+        audience: 'For sellers, brands and agencies',
+        text: 'Practical training for your own listing, operations, ads and reporting team, shaped around the platforms and workflows you actually use.',
+      },
+      {
+        id: 'college-workshops',
+        title: 'College Workshops',
+        audience: 'For colleges, departments and student clubs',
+        text: 'Workshops that introduce students to e-commerce and marketplace selling, with hands-on activities.',
+      },
+      {
+        id: 'student-classes',
+        title: 'Student Classes',
+        audience: 'For groups of students',
+        text: 'Classes for student groups at an introductory or deeper level, planned around your timetable and topics.',
+      },
+    ],
+  },
+
   // Admission form option lists (kept here so the API validates against the same values).
   options: {
     ageGroups: ['18–24', '25–34', '35–44', '45 and above'],
     genders: ['Male', 'Female', 'Prefer not to say'],
     qualifications: ['Below 10th', '10th / SSLC', '12th / HSC', 'Diploma / ITI', 'Bachelor’s degree', 'Master’s degree', 'Professional qualification', 'Other'],
     statuses: ['Student', 'Job Seeker', 'Working Professional', 'Business Owner', 'Existing Marketplace Seller', 'Freelancer', 'Other'],
-    currentPlatforms: ['Amazon', 'Flipkart', 'Meesho', 'Myntra', 'Ajio', 'Etsy', 'Not Yet Started', 'Other'],
+    currentPlatforms: ['Amazon', 'Flipkart', 'Meesho', 'Myntra', 'Ajio', 'Quick Commerce', 'Etsy', 'Not Yet Started', 'Other'],
     experience: ['Beginner', 'Less than 6 months', '6 months to 1 year', '1 to 3 years', 'More than 3 years'],
     modes: ['Online', 'Offline – Tiruppur'],
     batches: ['Weekday Evening', 'Weekend'],
     languages: ['Tamil', 'English', 'Both Tamil and English'],
-    interests: ['Amazon', 'Flipkart', 'Meesho', 'Myntra', 'Ajio', 'FirstCry', 'Etsy', 'Other'],
+    interests: ['Amazon', 'Flipkart', 'Meesho', 'Myntra', 'Ajio', 'Quick Commerce', 'FirstCry', 'Etsy', 'Other'],
     objectives: [
       'Start my own e-commerce business',
       'Grow my existing marketplace business',
@@ -153,6 +182,19 @@ export function buildWhatsAppUrl({ applicationId, name, courseName, mode, batch 
   ].join('\n');
   return `https://wa.me/${ACADEMY.whatsappNumber}?text=${encodeURIComponent(text)}`;
 }
+
+export const customProgramWhatsAppUrl = (title) =>
+  `https://wa.me/${ACADEMY.whatsappNumber}?text=${encodeURIComponent(
+    [
+      'Hello V2 Ecom Academy,',
+      `I would like to enquire about a customised programme: ${title}.`,
+      'Organisation / College name:',
+      'Number of participants:',
+      'Topics needed:',
+      'Mode (Online / Offline):',
+      'Please share the details and fees.',
+    ].join('\n')
+  )}`;
 
 export const generalWhatsAppUrl = () =>
   `https://wa.me/${ACADEMY.whatsappNumber}?text=${encodeURIComponent(
