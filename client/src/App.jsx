@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import Navbar from './components/layout/Navbar';
@@ -14,6 +15,11 @@ import CaseStudies from './pages/CaseStudies';
 import FaqPage from './pages/FaqPage';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+
+// Loaded on demand so they do not enlarge the main bundle for the rest of the site
+const Academy = lazy(() => import('./pages/Academy'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const AcademyApply = lazy(() => import('./pages/AcademyApply'));
 
 // Service Pages
 import AmazonAccountManagement from './pages/services/AmazonAccountManagement';
@@ -43,6 +49,9 @@ function App() {
             <Route path="/faq" element={<FaqPage />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/academy" element={<Suspense fallback={<div className="min-h-screen" />}><Academy /></Suspense>} />
+            <Route path="/academy/apply" element={<Suspense fallback={<div className="min-h-screen" />}><AcademyApply /></Suspense>} />
+            <Route path="/privacy" element={<Suspense fallback={<div className="min-h-screen" />}><Privacy /></Suspense>} />
 
             {/* Individual Service Routes */}
             <Route path="/services/amazon-account-management" element={<AmazonAccountManagement />} />

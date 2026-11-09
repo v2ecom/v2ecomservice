@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+const SITE_URL = 'https://www.v2ecomservices.com';
 const DEFAULT_TITLE = 'V2 Ecom Services — Launch, Manage & Scale Your Marketplace Business';
 const DEFAULT_DESCRIPTION = "India's premier marketplace growth partner. V2 Ecom Services helps sellers launch, manage, and scale businesses on Amazon, Flipkart, and Meesho with end-to-end seller management solutions.";
 
+// Routes with `canonical: true` also get a <link rel="canonical"> set client-side.
+// (Social-preview tags for /academy are generated statically at build time: see scripts/postbuild-meta.mjs.)
 const PAGE_SEO = {
-  '/': {
-    title: DEFAULT_TITLE,
-    description: DEFAULT_DESCRIPTION,
-  },
+  '/': { title: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION },
   '/about': {
     title: 'About Us | V2 Ecom Services',
     description: 'Learn about V2 Ecom Services, a trusted marketplace growth partner helping Amazon, Flipkart, and Meesho sellers scale with expert account management.',
@@ -73,24 +73,51 @@ const PAGE_SEO = {
     title: 'Account Health Management Services | V2 Ecom Services',
     description: 'Proactive account health monitoring and policy compliance support to protect your marketplace selling privileges.',
   },
+  '/academy': {
+    title: 'V2 Ecom Academy | Amazon, Flipkart & Meesho Training in Tiruppur',
+    description: 'Join V2 Ecom Academy for practical Amazon, Flipkart, Meesho and e-commerce marketplace training. Online and offline courses in Tamil and English.',
+    canonical: true,
+  },
+  '/academy/apply': {
+    title: 'Apply to V2 Ecom Academy | Admission Form',
+    description: 'Apply online for V2 Ecom Academy e-commerce marketplace courses. Online and offline training in Tamil and English from Tiruppur.',
+    canonical: true,
+  },
+  '/privacy': {
+    title: 'Privacy Policy | V2 Ecom Services',
+    description: 'How V2 Ecom Services and V2 Ecom Academy collect, use and protect the personal information you share with us.',
+    canonical: true,
+  },
 };
 
 export default function SEOManager() {
-  const location = useLocation();
+  const { pathname } = useLocation();
 
-useEffect(() => {
-  const seo = PAGE_SEO[location.pathname] ?? { title: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION };
+  useEffect(() => {
+    const seo = PAGE_SEO[pathname] ?? { title: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION };
+    document.title = seo.title;
 
-          document.title = seo.title;
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute('content', seo.description);
 
-          let metaDescription = document.querySelector('meta[name="description"]');
-  if (!metaDescription) {
-    metaDescription = document.createElement('meta');
-    metaDescription.setAttribute('name', 'description');
-    document.head.appendChild(metaDescription);
-  }
-  metaDescription.setAttribute('content', seo.description);
-}, [location.pathname]);
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    if (seo.canonical) {
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        canonical.setAttribute('data-seo-manager', 'true');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', `${SITE_URL}${pathname}`);
+    } else if (canonical?.hasAttribute('data-seo-manager')) {
+      canonical.remove();
+    }
+  }, [pathname]);
 
-return null;
+  return null;
 }

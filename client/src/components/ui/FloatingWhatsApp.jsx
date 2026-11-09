@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 
 export default function FloatingWhatsApp() {
+  const { pathname } = useLocation();
   const whatsappNumber = '919629212489';
   const whatsappMessage = encodeURIComponent(
-    "Hi! I'm interested in V2 Ecom Services. I'd like to discuss how you can help me scale my marketplace business."
+    pathname.startsWith('/academy')
+      ? 'Hello V2 Ecom Academy, I would like to know more about your e-commerce marketplace courses.'
+      : "Hi! I'm interested in V2 Ecom Services. I'd like to discuss how you can help me scale my marketplace business."
   );
 
   return (

@@ -22,6 +22,13 @@ export default {
           600: '#475569',
         },
         amazon: '#FF9900', // Keep if used for logos
+        // V2 Ecom Academy palette (used only by /academy sections)
+        academy: {
+          navy: '#0B1F3A',
+          royal: '#174A8B',
+          gold: '#D6A84F',
+          light: '#F5F7FA',
+        },
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
