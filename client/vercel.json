@@ -1,5 +1,8 @@
 {
-    "rewrites": [
-          { "source": "/(.*)", "destination": "/index.html" }
-    ]
+  "rewrites": [
+    { "source": "/academy", "destination": "/academy.html" },
+    { "source": "/academy/apply", "destination": "/academy-apply.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
 }

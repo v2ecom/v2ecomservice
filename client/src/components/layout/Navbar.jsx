@@ -27,6 +27,7 @@ const navLinks = [
   { label: 'Case Study', href: '/case-studies' },
   { label: 'Blog', href: '/blog' },
   { label: 'FAQ', href: '/faq' },
+  { label: 'Academy', href: '/academy' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -76,7 +77,7 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+          isScrolled || location.pathname.startsWith('/academy')
             ? 'bg-white/90 backdrop-blur-xl shadow-glass border-b border-white/50'
             : 'bg-transparent'
         }`}

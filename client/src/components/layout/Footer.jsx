@@ -15,6 +15,7 @@ const footerLinks = {
       { label: 'Case Studies', href: '/case-studies' },
       { label: 'Blog', href: '/blog' },
       { label: 'Contact', href: '/contact' },
+      { label: 'V2 Ecom Academy', href: '/academy' },
     ],
   },
   services: {
@@ -155,7 +156,7 @@ export default function Footer() {
             © {new Date().getFullYear()} V2 Ecom Services. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[11px] sm:text-xs text-slate-500">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <span>·</span>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
             <span>·</span>

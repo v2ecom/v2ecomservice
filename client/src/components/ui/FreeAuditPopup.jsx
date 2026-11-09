@@ -18,6 +18,9 @@ export default function FreeAuditPopup() {
   }, []);
 
   useEffect(() => {
+    // The Academy admissions page has its own form; don't auto-open the account-audit popup there.
+    if (window.location.pathname.startsWith('/academy')) return;
+
     // Check if the user has dismissed the popup in the last 7 days
     const hideUntil = localStorage.getItem(HIDE_POPUP_KEY);
     if (hideUntil && new Date().getTime() < parseInt(hideUntil, 10)) {
@@ -26,7 +29,7 @@ export default function FreeAuditPopup() {
     }
 
     const showPopup = () => {
-      if (!hasDismissed) setIsVisible(true);
+      if (!hasDismissed && !window.location.pathname.startsWith('/academy')) setIsVisible(true);
     };
 
     // Trigger 1: Time Delay (25 seconds)
