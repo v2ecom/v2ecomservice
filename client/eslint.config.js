@@ -18,4 +18,9 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
+  {
+    // Vercel serverless functions and build scripts run on Node, not in the browser.
+    files: ['api/**/*.js', 'scripts/**/*.{js,mjs}'],
+    languageOptions: { globals: globals.node },
+  },
 ])
